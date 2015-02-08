@@ -1,0 +1,55 @@
+#include "keymap_common.h"
+#include "backlight.h"
+
+const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+    /* Layer 0: QWERTY */
+    KEYMAP_60(ESC, 1,   2,   3,   4,   5,   6,   7,   8,   9,   0,   MINS,EQL, BSPC, \
+              TAB, Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   LBRC,RBRC,BSLS, \
+              FN0, A,   S,   D,   F,   G,   H,   J,   K,   L,   SCLN,QUOT,NO,  ENT,  \
+              LSFT,NO,  Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,RSFT,NO,   \
+              LCTL,LGUI,LALT,               SPC,                NO,  RALT,FN1, RCTL),
+    /* Layer 1: Space fn */
+    KEYMAP_60(FN2, TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS, \
+              TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS, \
+              FN3, TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,NO,  TRNS, \
+              TRNS,NO,  TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,NO,   \
+              TRNS,TRNS,TRNS,               FN4,                NO,  TRNS,RGUI,TRNS),
+    /* Layer 2: Nav */
+    KEYMAP_60(TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS, \
+              TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS, \
+              TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,NO,  TRNS, \
+              TRNS,NO,  TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,UP,  NO,   \
+              TRNS,FN1, TRNS,               TRNS,               NO,  LEFT,DOWN,RGHT),
+    /* Layer 3: Mouse */
+    KEYMAP_60(TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS, \
+              TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS, \
+              TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,BTN3,BTN1,NO,  BTN2, \
+              TRNS,NO,  TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,WH_D,WH_U,MS_U,NO,   \
+              TRNS,FN1, TRNS,               TRNS,               NO,  MS_L,MS_D,MS_R),
+    /* Layer 4: Toggle */
+    KEYMAP_60(FN5, FN6, FN7, FN8, FN9, TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS, \
+              TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS, \
+              TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,NO,  TRNS, \
+              TRNS,NO,  TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,NO,   \
+              TRNS,TRNS,TRNS,               TRNS,               NO,  TRNS,TRNS,TRNS),
+    /* Layer 5: Functions */
+    KEYMAP_60(SLEP,F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, PWR,  \
+              TRNS,MSEL,VOLU,MPLY,PSCR,SLCK,PAUS,HOME,INS, DEL, END, TRNS,TRNS,TRNS, \
+              CAPS,MPRV,VOLD,MNXT,TRNS,TRNS,LEFT,DOWN,UP,  RGHT,TRNS,TRNS,NO,  WSCH, \
+              TRNS,NO,  MUTE,TRNS,TRNS,TRNS,GRV, FN10,PGDN,PGUP,TRNS,TRNS,TRNS,NO,   \
+              TRNS,TRNS,TRNS,               TRNS,               NO,  TRNS,TRNS,TRNS)
+};
+
+const uint16_t PROGMEM fn_actions[] = {
+    [0]  = ACTION_LAYER_TAP_KEY(4, KC_CAPS),
+    [1]  = ACTION_LAYER_MOMENTARY(5),
+    [2]  = ACTION_MODS_KEY(MOD_RSFT, KC_GRV),
+    [3]  = ACTION_LAYER_TAP_KEY(4, KC_ESC),
+    [4]  = ACTION_LAYER_TAP_KEY(5, KC_SPACE),
+    [5]  = ACTION_LAYER_SET_CLEAR(0),
+    [6]  = ACTION_LAYER_TOGGLE(1),
+    [7]  = ACTION_LAYER_TOGGLE(2),
+    [8]  = ACTION_LAYER_TOGGLE(3),
+    [9]  = ACTION_BACKLIGHT_LEVEL(BACKLIGHT_SWITCH),
+    [10] = ACTION_MODS_KEY(MOD_LSFT, KC_INS)
+};

@@ -52,10 +52,6 @@ SRC =	keymap_common.c \
 	matrix.c \
 	backlight.c
 
-ifdef LAYOUT
-   OPT_DEFS += -DNERD_LAYOUT_$(LAYOUT)
-endif
-
 ifdef KEYMAP
     SRC := keymap_$(LAYOUT)_$(KEYMAP).c $(SRC)
 endif
@@ -111,10 +107,10 @@ OPT_DEFS += -DBOOTLOADER_SIZE=4096
 BOOTMAGIC_ENABLE = yes	# Virtual DIP switch configuration(+1000)
 MOUSEKEY_ENABLE = yes	# Mouse keys(+4700)
 EXTRAKEY_ENABLE = yes	# Audio control and System control(+450)
-CONSOLE_ENABLE = yes	# Console for debug(+400)
+#CONSOLE_ENABLE = yes	# Console for debug(+400)
 COMMAND_ENABLE = yes    # Commands for debug and configuration
 #SLEEP_LED_ENABLE = yes  # Breathing sleep LED during USB suspend
-#NKRO_ENABLE = yes	# USB Nkey Rollover - not yet supported in LUFA
+NKRO_ENABLE = yes	# USB Nkey Rollover
 BACKLIGHT_ENABLE = yes  # Enable keyboard backlight functionality
 
 # Search Path
