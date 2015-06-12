@@ -14,20 +14,16 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include "keymap_common.h"
 
-#include <avr/io.h>
-#include "led.h"
-
-void led_set(uint8_t usb_led)
+/* translates key to keycode */
+uint8_t keymap_key_to_keycode(uint8_t layer, keypos_t key)
 {
-    DDRB |= (1<<7);
-    DDRC |= (1<<5) | (1<<6);
-
-    usb_led & (1<<USB_LED_CAPS_LOCK) ? (PORTC &= ~(1<<6)) : (PORTC |= (1<<6));
-    usb_led & (1<<USB_LED_NUM_LOCK) ? (PORTC &= ~(1<<5)) : (PORTC |= (1<<5));
-    usb_led & (1<<USB_LED_SCROLL_LOCK) ? (PORTB &= ~(1<<7)) : (PORTB |= (1<<7));
+    return pgm_read_byte(&keymaps[(layer)][(key.col)][(key.row)]);
 }
 
-void led_layer_set(uint32_t state)
+/* translates Fn keycode to action */
+action_t keymap_fn_to_action(uint8_t keycode)
 {
+    return (action_t){.code = pgm_read_word(&fn_actions[FN_INDEX(keycode)]) };
 }

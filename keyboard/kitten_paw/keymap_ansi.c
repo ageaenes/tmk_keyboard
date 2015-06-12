@@ -1,5 +1,6 @@
+#include "keymap_common.h"
 
-static const uint8_t PROGMEM keymaps[][MATRIX_COLS][MATRIX_ROWS] = {
+const uint8_t PROGMEM keymaps[][MATRIX_COLS][MATRIX_ROWS] = {
     /* Layer 0: Standard ANSI layer */
     KEYMAP(\
          ESC, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11,  F12,        PSCR,SLCK,PAUS,                         \
@@ -18,6 +19,6 @@ static const uint8_t PROGMEM keymaps[][MATRIX_COLS][MATRIX_ROWS] = {
          TRNS,TRNS,TRNS,               TRNS,               TRNS,TRNS,TRNS,TRNS,   TRNS,TRNS,TRNS,    TRNS,TRNS)
 };
 
-static const uint16_t PROGMEM fn_actions[] = {
+const uint16_t PROGMEM fn_actions[] = {
     [0] = ACTION_LAYER_MOMENTARY(1)
 };
