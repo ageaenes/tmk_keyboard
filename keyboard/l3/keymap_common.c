@@ -1,5 +1,5 @@
 /*
-Copyright 2011 Jun Wako <wakojun@gmail.com>
+Copyright 2016 Ralf Schmitt <ralf@bunkertor.net>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -15,27 +15,14 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef TIMER_AVR_H
-#define TIMER_AVR_H
+#include "keymap_common.h"
 
-#include <stdint.h>
+uint8_t keymap_key_to_keycode(uint8_t layer, keypos_t key)
+{
+    return pgm_read_byte(&keymaps[(layer)][(key.row)][(key.col)]);
+}
 
-#ifndef TIMER_PRESCALER
-#   if F_CPU > 16000000
-#       define TIMER_PRESCALER      256
-#   elif F_CPU > 2000000
-#       define TIMER_PRESCALER      64
-#   elif F_CPU > 250000
-#       define TIMER_PRESCALER      8
-#   else
-#       define TIMER_PRESCALER      1
-#   endif
-#endif
-#define TIMER_RAW_FREQ      (F_CPU/TIMER_PRESCALER)
-#define TIMER_RAW_TOP       (TIMER_RAW_FREQ/1000)
-
-#if (TIMER_RAW_TOP > 255)
-#   error "Timer0 can't count 1ms at this clock freq. Use larger prescaler."
-#endif
-
-#endif
+action_t keymap_fn_to_action(uint8_t keycode)
+{
+    return (action_t){ .code = pgm_read_word(&fn_actions[FN_INDEX(keycode)]) };
+}
