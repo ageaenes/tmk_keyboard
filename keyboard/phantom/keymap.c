@@ -120,6 +120,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #include "keymap_iso.h"
 #elif defined(LAYOUT_ANSI_150)
     #include "keymap_ansi_150.h"
+#elif defined(LAYOUT_XAUSER)
+    #include "keymap_xauser.h"
+#elif defined(LAYOUT_XAUSER_150)
+    #include "keymap_xauser150.h"
 #else
     #include "keymap_ansi.h"
 #endif
