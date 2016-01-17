@@ -3,6 +3,7 @@
 #include "action.h"
 #include "util.h"
 #include "action_layer.h"
+#include "led.h"
 
 #ifdef DEBUG_ACTION
 #include "debug.h"
@@ -64,6 +65,7 @@ static void layer_state_set(uint32_t state)
     layer_state = state;
     layer_debug(); dprintln();
     clear_keyboard_but_mods(); // To avoid stuck keys
+    led_layer_set(state);
 }
 
 void layer_clear(void)
