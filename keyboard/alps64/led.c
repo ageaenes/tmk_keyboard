@@ -32,3 +32,7 @@ void led_set(uint8_t usb_led)
         PORTC &= ~(1<<5);
     }
 }
+
+void led_layer_set(uint32_t state)
+{
+}
