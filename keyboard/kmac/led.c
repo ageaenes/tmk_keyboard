@@ -27,28 +27,28 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 void led_set(uint8_t usb_led)
 {
     // Set as output.
-    DDRB |= (1<<0);
-    DDRE |= (1<<6);
+    DDRB |= (1<<3);
 
     if (usb_led & (1<<USB_LED_CAPS_LOCK))
     {
         // Output low.
-        PORTB &= ~(1<<0);
+        PORTB &= ~( (1<<3));
     }
     else
     {
         // Output high.
-        PORTB |= (1<<0);
+        PORTB |= (1<<3);
+
     }
 
     if (usb_led & (1<<USB_LED_SCROLL_LOCK))
     {
         // Output low.
-        PORTE &= ~(1<<6);
+        //PORTE &= ~(1<<6);
     }
     else
     {
         // Output high.
-        PORTE |= (1<<6);
+        //PORTE |= (1<<6);
     }
 }

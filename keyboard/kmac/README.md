@@ -108,3 +108,22 @@ See [keymap_winkeyless.h](keymap_winkeyless.h) for detail.
      |-----------------------------------------------------------| ,-----------.
      |    |   |    |                               |    |   |    | |   |   |   |
      `-----------------------------------------------------------' `-----------'
+
+
+Port Documentation
+
+
+Happy:
+	Matrix:
+		Rows:
+			PORT D 0,1,2,3,5,7
+			PORT E 2
+		Columns:
+			PORT C 6,7
+			PORT F 0,1
+			PORT E 6
+			PORT B 0,4,7
+			PORT D 4,6,7
+
+	Led:
+		PORT B 3
